@@ -472,3 +472,25 @@ footer{
     margin:25px auto;
 
 }
+
+/* JUSTIFICADO GENERAL */
+
+.section p{
+
+    text-align:justify;
+
+    line-height:1.9;
+
+}
+
+/* SOLO ESTAS SECCIONES CENTRADAS */
+
+#silabo p,
+#logros p,
+#dificultades p,
+#propuestas p,
+#conclusion p{
+
+    text-align:center;
+
+}
