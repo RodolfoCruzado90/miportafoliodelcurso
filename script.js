@@ -1,61 +1,62 @@
-// ================= SCROLL ANIMATION =================
-const elements = document.querySelectorAll(".reveal");
+// ================= REVEAL EFFECT =================
 
-function revealOnScroll() {
-    for (let el of elements) {
+window.addEventListener("scroll", revealSections);
+
+function revealSections(){
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    reveals.forEach(section => {
+
         const windowHeight = window.innerHeight;
-        const elementTop = el.getBoundingClientRect().top;
 
-        if (elementTop < windowHeight - 100) {
-            el.classList.add("active");
+        const revealTop = section.getBoundingClientRect().top;
+
+        const revealPoint = 120;
+
+        if(revealTop < windowHeight - revealPoint){
+
+            section.classList.add("active");
+
         }
-    }
+
+    });
+
 }
 
-window.addEventListener("scroll", revealOnScroll);
+// ================= NAVBAR ACTIVE =================
 
-// Ejecutar al cargar
-revealOnScroll();
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-links a");
 
-
-// ================= SMOOTH NAV (EXTRA MEJORA) =================
-document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        const targetId = this.getAttribute("href");
-        const target = document.querySelector(targetId);
-
-        if (target) {
-            window.scrollTo({
-                top: target.offsetTop - 70,
-                behavior: "smooth"
-            });
-        }
-    });
-});
-
-
-// ================= ACTIVE MENU HIGHLIGHT =================
 window.addEventListener("scroll", () => {
-    let sections = document.querySelectorAll("section");
-    let links = document.querySelectorAll(".nav-links a");
 
     let current = "";
 
     sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
 
-        if (pageYOffset >= sectionTop) {
+        const sectionTop = section.offsetTop - 150;
+
+        const sectionHeight = section.clientHeight;
+
+        if(pageYOffset >= sectionTop){
+
             current = section.getAttribute("id");
+
         }
+
     });
 
-    links.forEach(link => {
+    navLinks.forEach(link => {
+
         link.classList.remove("active");
 
-        if (link.getAttribute("href") === "#" + current) {
+        if(link.getAttribute("href").includes(current)){
+
             link.classList.add("active");
+
         }
+
     });
+
 });
