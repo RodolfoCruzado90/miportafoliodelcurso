@@ -438,3 +438,37 @@ footer{
     }
 
 }
+
+/* ================= TEXTO DE SECCIONES ================= */
+
+.section p{
+
+    text-align:justify;
+
+    margin-top:20px;
+
+    font-size:17px;
+
+    line-height:1.9;
+
+    color:#333;
+
+}
+
+/* CENTRAR TÍTULOS */
+
+.section h2{
+
+    text-align:center;
+
+}
+
+/* CENTRAR IMÁGENES */
+
+.section-img{
+
+    display:block;
+
+    margin:25px auto;
+
+}
